@@ -353,9 +353,16 @@ h2:after {
 }
 
 .about-right .container {
-    max-width: 600px;
+    max-width: 900px;
+    /* увеличено для трёх колонок */
     margin: 0 auto;
 }
+
+.about-section .grid-2 {
+    grid-template-columns: 1fr;
+}
+
+/* Остальные стили секции (why, hero и т.д.) без изменений */
 
 /* ===== СЕКЦИЯ ПОЧЕМУ Я (фото справа) ===== */
 .why-section {
@@ -747,6 +754,24 @@ h2:after {
         order: 1;
         height: 50vh;
     }
+
+    .nav-menu.open {
+        display: block;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-right: 5px;
+        /* чтобы скролл не налезал на текст */
+    }
+
+    /* Дополнительный отступ снизу для секции "Обо мне" */
+    .about-right {
+        padding-bottom: 3rem;
+    }
+
+    /* Если заголовок h2 убегает под фото, добавляем отступ */
+    .about-right h2 {
+        margin-top: 0;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -774,6 +799,11 @@ h2:after {
     .about-left,
     .why-right {
         height: 40vh;
+    }
+
+    /* Ещё немного воздуха для карточек на очень узких экранах */
+    .about-right .card:last-child {
+        margin-bottom: 0;
     }
 }
 
