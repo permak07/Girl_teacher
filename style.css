@@ -93,7 +93,11 @@ body {
 /* ===== LEFT SIDEBAR ===== */
 .sidebar {
     width: 280px;
-    background: #fae0d8;
+    background: rgba(250, 224, 216, 0.3);
+    /* полупрозрачный */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* для Safari */
     padding: 2rem 1.5rem;
     position: sticky;
     top: 0;
@@ -161,7 +165,7 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background: #e2d0c8;
+    background: rgba(226, 208, 200, 1.7);
     color: #5f4a44;
     font-weight: 500;
     padding-left: 1.5rem;
@@ -829,6 +833,5 @@ h2:after {
 footer {
     text-align: center;
     padding: 2rem;
-    background: #fcf1ed;
     color: #836156;
 }
