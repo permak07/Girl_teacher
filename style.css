@@ -835,3 +835,9 @@ footer {
     padding: 2rem;
     color: #836156;
 }
+
+footer span a {
+    color: #836156;
+    /* тон, совпадающий с цветом текста footer */
+    text-decoration: none;
+}
