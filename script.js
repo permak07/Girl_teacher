@@ -3,7 +3,7 @@
     const splash = document.getElementById('splash');
     setTimeout(() => {
         splash.classList.add('hidden');
-    }, 2000); // 2 секунды
+    }, 2000);
     splash.addEventListener('click', () => {
         splash.classList.add('hidden');
     });
@@ -19,7 +19,7 @@
 
     // ----- МОДАЛЬНОЕ ОКНО (форма) -----
     const modal = document.getElementById('appointmentModal');
-    const openModalBtns = document.querySelectorAll('#openModalBtn, #openModalBtn2'); // две кнопки
+    const openModalBtns = document.querySelectorAll('#openModalBtn, #openModalBtn2');
     const closeModal = document.getElementById('closeModal');
 
     function openModal() {
@@ -46,7 +46,7 @@
         e.preventDefault();
         alert('Спасибо, заявка отправлена! Я свяжусь с вами в ближайшее время.');
         closeModalFunc();
-        form.reset(); // очистить поля
+        form.reset();
     });
 
     // ----- Плавный скролл и активное меню -----
@@ -85,7 +85,6 @@
             if (targetSection) {
                 targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            // на мобильных закрываем меню после клика
             if (window.innerWidth <= 900) {
                 navMenu.classList.remove('open');
             }

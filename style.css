@@ -7,7 +7,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #fdf9f7;
-    /* очень светлый кремово-бежевый фон */
     color: #4a3a35;
     line-height: 1.6;
     overflow-x: hidden;
@@ -21,7 +20,6 @@ body {
     width: 100%;
     height: 100vh;
     background: #f8d7d0;
-    /* нежный пыльно-розовый */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +79,6 @@ body {
 .sidebar {
     width: 280px;
     background: #fae0d8;
-    /* нежный пыльно-розовый */
     padding: 2rem 1.5rem;
     position: sticky;
     top: 0;
@@ -150,7 +147,6 @@ body {
 .nav-menu a:hover,
 .nav-menu a.active {
     background: #e2d0c8;
-    /* чуть темнее розового */
     color: #5f4a44;
     font-weight: 500;
     padding-left: 1.5rem;
@@ -160,7 +156,6 @@ body {
     margin-right: 0.8rem;
     width: 1.4rem;
     color: #c99e8f;
-    /* нежно-розовый акцент */
     font-size: 1.1rem;
 }
 
@@ -178,7 +173,6 @@ body {
     display: none;
     background: none;
     border: 2px solid #c99e8f;
-    /* нежно-розовый */
     border-radius: 50px;
     padding: 0.5rem 1rem;
     font-size: 1.4rem;
@@ -198,7 +192,6 @@ body {
     flex: 1;
     max-width: calc(100% - 280px);
     background-color: #fdf9f7;
-    /* светлый кремовый фон */
 }
 
 section {
@@ -233,53 +226,169 @@ h2:after {
     width: 70px;
     height: 3px;
     background: #c99e8f;
-    /* нежно-розовый */
     border-radius: 3px;
 }
 
-.hero-block {
-    background: linear-gradient(145deg, #fff5f2, #fff);
-    border-radius: 0 0 40px 40px;
+/* ===== HERO SECTION (три колонки) ===== */
+.hero {
+    display: flex;
+    min-height: 90vh;
+    padding: 0;
+    border-bottom: none;
 }
 
-.hero-name {
+.hero-left,
+.hero-center,
+.hero-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-left {
+    background-color: transparent;
+    padding: 2rem;
+}
+
+.hero-title {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hero-title h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 600;
+    font-size: 2.5rem;
     color: #643f32;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
-.hero-sub {
-    font-size: 1.3rem;
-    color: #ab7a6b;
-    margin-top: 0.5rem;
-    letter-spacing: 1px;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-.hero-desc {
-    margin-top: 2.2rem;
+.hero-title p {
     font-size: 1.1rem;
-    background: #faece8;
-    padding: 2rem 2.5rem;
-    border-radius: 30px;
-    color: #4a322b;
-    box-shadow: 0 10px 25px rgba(201, 158, 143, 0.15);
-    /* розоватая тень */
+    color: #ab7a6b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.hero-desc p {
-    margin-bottom: 1rem;
+.hero-small-photo {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(201, 158, 143, 0.3);
 }
 
-.hero-desc i {
+.hero-small-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-center {
+    padding: 2rem;
+    text-align: left;
+}
+
+.hero-text {
+    max-width: 400px;
+}
+
+.hero-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.hero-text i {
     color: #c99e8f;
-    /* нежно-розовый */
-    margin-right: 10px;
+    margin-top: 0.2rem;
 }
 
+.hero-right {
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero-large-photo {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-large-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== СЕКЦИЯ ОБО МНЕ (фото слева) ===== */
+.about-section {
+    display: flex;
+    min-height: 90vh;
+    padding: 0;
+}
+
+.about-left {
+    flex: 1;
+    overflow: hidden;
+}
+
+.about-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+}
+
+.about-right .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== СЕКЦИЯ ПОЧЕМУ Я (фото справа) ===== */
+.why-section {
+    display: flex;
+    min-height: 90vh;
+    padding: 0;
+}
+
+.why-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+}
+
+.why-left .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.why-right {
+    flex: 1;
+    overflow: hidden;
+}
+
+.why-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== ОБЩИЕ СТИЛИ ДЛЯ КАРТОЧЕК И СПИСКОВ ===== */
 .bullet-list {
     list-style: none;
     margin-top: 1.5rem;
@@ -294,7 +403,6 @@ h2:after {
 
 .bullet-list li i {
     color: #c99e8f;
-    /* нежно-розовый */
     width: 1.5rem;
     font-size: 1.1rem;
 }
@@ -311,7 +419,6 @@ h2:after {
     padding: 1.8rem;
     border-radius: 25px;
     box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
-    /* розоватая тень */
     transition: transform 0.2s;
 }
 
@@ -325,8 +432,12 @@ h2:after {
     margin-bottom: 1rem;
     font-weight: 500;
     border-left: 4px solid #c99e8f;
-    /* нежно-розовый */
     padding-left: 1rem;
+}
+
+.card i {
+    color: #c99e8f;
+    margin-right: 0.5rem;
 }
 
 /* ===== КОНТАКТЫ (каждый пункт в отдельной карточке) ===== */
@@ -356,7 +467,6 @@ h2:after {
 .contact-item i {
     width: 2rem;
     color: #c99e8f;
-    /* нежно-розовый */
     font-size: 1.5rem;
 }
 
@@ -373,7 +483,6 @@ h2:after {
 
 .btn {
     background: #c99e8f;
-    /* нежно-розовый */
     color: white;
     border: none;
     padding: 0.9rem 2.2rem;
@@ -388,7 +497,6 @@ h2:after {
 
 .btn:hover {
     background: #b58273;
-    /* более насыщенный розовый */
     transform: scale(1.02);
 }
 
@@ -482,7 +590,6 @@ h2:after {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #c99e8f;
-    /* нежно-розовый */
 }
 
 .form-group textarea {
@@ -577,8 +684,68 @@ h2:after {
         padding: 3rem 1.5rem;
     }
 
-    .hero-name {
-        font-size: 2.8rem;
+    /* Hero mobile */
+    .hero {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .hero-left,
+    .hero-center,
+    .hero-right {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-left {
+        order: 1;
+    }
+
+    .hero-center {
+        order: 2;
+    }
+
+    .hero-right {
+        order: 3;
+        height: 50vh;
+    }
+
+    .hero-title {
+        text-align: center;
+    }
+
+    .hero-small-photo {
+        margin: 0 auto;
+    }
+
+    /* About mobile */
+    .about-section {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .about-left {
+        height: 50vh;
+    }
+
+    .about-right {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Why mobile */
+    .why-section {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .why-left {
+        order: 2;
+        padding: 2rem 1.5rem;
+    }
+
+    .why-right {
+        order: 1;
+        height: 50vh;
     }
 }
 
@@ -599,6 +766,15 @@ h2:after {
         font-size: 1rem;
         padding: 1.2rem;
     }
+
+    .hero-right {
+        height: 40vh;
+    }
+
+    .about-left,
+    .why-right {
+        height: 40vh;
+    }
 }
 
 .nav-menu a.active {
@@ -613,8 +789,7 @@ footer {
     color: #836156;
 }
 
-/* ===== ЕДИНЫЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ===== */
+/* Единый фон для всех секций (кроме hero, about, why – они уже имеют фон по умолчанию) */
 .content section {
     background-color: #fdf9f7;
-    /* светлый кремовый, как у body */
 }
