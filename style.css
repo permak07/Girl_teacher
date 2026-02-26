@@ -6,10 +6,25 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #fdf9f7;
+    background: linear-gradient(180deg, #f8d7d0 0%, #d4e0e5 100%);
     color: #4a3a35;
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
+    /* чтобы градиент покрывал всю высоту */
+}
+
+/* Убираем фоновые цвета у секций контента */
+.content section {
+    background-color: transparent;
+    /* было #fdf9f7 */
+}
+
+/* Если нужна лёгкая полупрозрачность для sidebar, можно добавить, но пока оставим как есть */
+.sidebar {
+    background: #fae0d8;
+    /* без изменений */
+    /* можно добавить rgba(250, 224, 216, 0.95) для лёгкого просвечивания градиента */
 }
 
 /* ===== SPLASH SCREEN ===== */
@@ -191,7 +206,6 @@ body {
 .content {
     flex: 1;
     max-width: calc(100% - 280px);
-    background-color: #fdf9f7;
 }
 
 section {
@@ -817,9 +831,4 @@ footer {
     padding: 2rem;
     background: #fcf1ed;
     color: #836156;
-}
-
-/* Единый фон для всех секций (кроме hero, about, why – они уже имеют фон по умолчанию) */
-.content section {
-    background-color: #fdf9f7;
 }
