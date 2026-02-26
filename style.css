@@ -6,8 +6,9 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #fff9f9;
-    color: #3f2e2e;
+    background-color: #fdf9f7;
+    /* очень светлый кремово-бежевый фон */
+    color: #4a3a35;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -19,8 +20,8 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #fdf3f0;
-    /* нежный фон */
+    background: #f8d7d0;
+    /* нежный пыльно-розовый */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +45,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
     font-weight: 600;
-    color: #895746;
+    color: #5f4a44;
     line-height: 1.2;
     text-shadow: 2px 2px 10px rgba(200, 130, 100, 0.2);
 }
@@ -53,7 +54,7 @@ body {
     font-size: 1.4rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #ab7a6b;
+    color: #6f5a53;
     margin-top: 0.5rem;
     font-weight: 300;
 }
@@ -79,14 +80,15 @@ body {
 /* ===== LEFT SIDEBAR ===== */
 .sidebar {
     width: 280px;
-    background: #fff3f0;
+    background: #fae0d8;
+    /* нежный пыльно-розовый */
     padding: 2rem 1.5rem;
     position: sticky;
     top: 0;
     height: 100vh;
     overflow-y: auto;
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.02);
-    border-right: 1px solid #f0d9d4;
+    border-right: 1px solid #e2cbc4;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
@@ -101,7 +103,7 @@ body {
 
 .logo-area {
     margin-bottom: 2.5rem;
-    border-bottom: 2px solid #ecc7c0;
+    border-bottom: 2px solid #cbb2aa;
     padding-bottom: 1.2rem;
 }
 
@@ -109,7 +111,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem;
     font-weight: 600;
-    color: #a65e4a;
+    color: #6f4f44;
     line-height: 1.2;
 }
 
@@ -117,7 +119,7 @@ body {
     font-size: 0.9rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #a07a70;
+    color: #7a6057;
     margin-top: 0.25rem;
 }
 
@@ -147,8 +149,9 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background: #eddcd6;
-    color: #7f4e3f;
+    background: #e2d0c8;
+    /* чуть темнее розового */
+    color: #5f4a44;
     font-weight: 500;
     padding-left: 1.5rem;
 }
@@ -156,15 +159,16 @@ body {
 .nav-menu i {
     margin-right: 0.8rem;
     width: 1.4rem;
-    color: #b78d81;
+    color: #c99e8f;
+    /* нежно-розовый акцент */
     font-size: 1.1rem;
 }
 
 .sidebar-footer {
     margin-top: auto;
     font-size: 0.8rem;
-    color: #b99b93;
-    border-top: 1px dashed #e1cbc4;
+    color: #a48b84;
+    border-top: 1px dashed #d9c2ba;
     padding-top: 1rem;
     text-align: center;
 }
@@ -173,11 +177,12 @@ body {
 .menu-toggle {
     display: none;
     background: none;
-    border: 2px solid #b78d81;
+    border: 2px solid #c99e8f;
+    /* нежно-розовый */
     border-radius: 50px;
     padding: 0.5rem 1rem;
     font-size: 1.4rem;
-    color: #7f4e3f;
+    color: #5f4a44;
     cursor: pointer;
     margin-bottom: 1rem;
     align-self: flex-start;
@@ -185,14 +190,15 @@ body {
 }
 
 .menu-toggle:hover {
-    background: #eddcd6;
+    background: #e2d0c8;
 }
 
 /* ===== MAIN CONTENT ===== */
 .content {
     flex: 1;
     max-width: calc(100% - 280px);
-    background-color: #fff9f9;
+    background-color: #fdf9f7;
+    /* светлый кремовый фон */
 }
 
 section {
@@ -213,7 +219,7 @@ h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     font-weight: 500;
-    color: #764b3c;
+    color: #6f4f44;
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
@@ -226,12 +232,13 @@ h2:after {
     left: 0;
     width: 70px;
     height: 3px;
-    background: #e3b5a8;
+    background: #c99e8f;
+    /* нежно-розовый */
     border-radius: 3px;
 }
 
 .hero-block {
-    background: linear-gradient(145deg, #fef7f5, #fff);
+    background: linear-gradient(145deg, #fff5f2, #fff);
     border-radius: 0 0 40px 40px;
 }
 
@@ -259,7 +266,8 @@ h2:after {
     padding: 2rem 2.5rem;
     border-radius: 30px;
     color: #4a322b;
-    box-shadow: 0 10px 25px rgba(190, 125, 105, 0.1);
+    box-shadow: 0 10px 25px rgba(201, 158, 143, 0.15);
+    /* розоватая тень */
 }
 
 .hero-desc p {
@@ -267,7 +275,8 @@ h2:after {
 }
 
 .hero-desc i {
-    color: #b07362;
+    color: #c99e8f;
+    /* нежно-розовый */
     margin-right: 10px;
 }
 
@@ -284,7 +293,8 @@ h2:after {
 }
 
 .bullet-list li i {
-    color: #c2897a;
+    color: #c99e8f;
+    /* нежно-розовый */
     width: 1.5rem;
     font-size: 1.1rem;
 }
@@ -297,10 +307,11 @@ h2:after {
 }
 
 .card {
-    background: #fff5f2;
+    background: #fffaf8;
     padding: 1.8rem;
     border-radius: 25px;
-    box-shadow: 0 5px 12px rgba(180, 120, 100, 0.05);
+    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
+    /* розоватая тень */
     transition: transform 0.2s;
 }
 
@@ -310,10 +321,11 @@ h2:after {
 
 .card h3 {
     font-size: 1.4rem;
-    color: #8b5e4f;
+    color: #6f4f44;
     margin-bottom: 1rem;
     font-weight: 500;
-    border-left: 4px solid #e1b5a8;
+    border-left: 4px solid #c99e8f;
+    /* нежно-розовый */
     padding-left: 1rem;
 }
 
@@ -326,10 +338,10 @@ h2:after {
 }
 
 .contact-item {
-    background: #fff5f2;
+    background: #fffaf8;
     padding: 1.5rem 1.8rem;
     border-radius: 25px;
-    box-shadow: 0 5px 12px rgba(180, 120, 100, 0.05);
+    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
     display: flex;
     align-items: center;
     gap: 1.2rem;
@@ -343,7 +355,8 @@ h2:after {
 
 .contact-item i {
     width: 2rem;
-    color: #aa6e5b;
+    color: #c99e8f;
+    /* нежно-розовый */
     font-size: 1.5rem;
 }
 
@@ -359,7 +372,8 @@ h2:after {
 }
 
 .btn {
-    background: #ab6f5e;
+    background: #c99e8f;
+    /* нежно-розовый */
     color: white;
     border: none;
     padding: 0.9rem 2.2rem;
@@ -369,11 +383,12 @@ h2:after {
     transition: 0.2s;
     display: inline-block;
     text-decoration: none;
-    box-shadow: 0 5px 12px rgba(170, 100, 80, 0.3);
+    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.4);
 }
 
 .btn:hover {
-    background: #895746;
+    background: #b58273;
+    /* более насыщенный розовый */
     transform: scale(1.02);
 }
 
@@ -401,7 +416,7 @@ h2:after {
     border-radius: 40px;
     max-width: 500px;
     width: 90%;
-    box-shadow: 0 25px 40px rgba(90, 50, 40, 0.2);
+    box-shadow: 0 25px 40px rgba(201, 158, 143, 0.2);
     position: relative;
     animation: fadeInModal 0.3s;
 }
@@ -423,14 +438,14 @@ h2:after {
     top: 1rem;
     right: 1.5rem;
     font-size: 2rem;
-    color: #aa6e5b;
+    color: #c99e8f;
     cursor: pointer;
     transition: 0.2s;
     line-height: 1;
 }
 
 .close-modal:hover {
-    color: #643f32;
+    color: #b58273;
 }
 
 .modal h3 {
@@ -466,7 +481,8 @@ h2:after {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #b78d81;
+    border-color: #c99e8f;
+    /* нежно-розовый */
 }
 
 .form-group textarea {
@@ -489,7 +505,6 @@ h2:after {
         width: 100%;
         height: auto;
         position: sticky;
-        /* закрепляем сверху */
         top: 0;
         padding: 1rem 1.5rem;
         border-right: none;
@@ -504,9 +519,7 @@ h2:after {
 
     .sidebar-inner {
         flex-direction: row;
-        /* возвращаем строку */
         flex-wrap: wrap;
-        /* разрешаем перенос */
         align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -514,7 +527,6 @@ h2:after {
 
     .logo-area {
         margin-bottom: 0;
-        /* убираем нижний отступ */
         border-bottom: none;
         padding-bottom: 0;
         width: auto;
@@ -522,22 +534,15 @@ h2:after {
 
     .menu-toggle {
         display: block;
-        /* показываем гамбургер */
         margin-bottom: 0;
-        /* убираем нижний отступ, чтобы не мешал */
         align-self: center;
-        /* выравниваем по центру по вертикали */
     }
 
     .nav-menu {
         width: 100%;
-        /* занимает всю ширину */
         display: none;
-        /* скрыто по умолчанию */
         margin-top: 1rem;
-        /* отступ сверху, чтобы отделить от кнопки */
         flex-basis: 100%;
-        /* принудительный перенос */
     }
 
     .nav-menu.open {
@@ -548,20 +553,16 @@ h2:after {
         display: flex;
         flex-direction: column;
         padding-left: 0;
-        /* убираем возможные отступы */
     }
 
     .nav-menu li {
         margin-bottom: 0.5rem;
         width: 100%;
-        /* каждый пункт на всю ширину */
     }
 
     .nav-menu a {
         width: 100%;
-        /* ссылка на всю ширину */
         box-sizing: border-box;
-        /* чтобы padding не выходил за пределы */
     }
 
     .sidebar-footer {
@@ -610,4 +611,10 @@ footer {
     padding: 2rem;
     background: #fcf1ed;
     color: #836156;
+}
+
+/* ===== ЕДИНЫЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ===== */
+.content section {
+    background-color: #fdf9f7;
+    /* светлый кремовый, как у body */
 }
