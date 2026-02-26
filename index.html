@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анна Игоревна | Психолог, женский наставник</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: elegant & modern -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff9f9;
+            color: #3f2e2e;
+            line-height: 1.6;
+        }
+
+        /* wrapper with flex — left sidebar + main */
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== LEFT SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: #fff3f0;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.02);
+            border-right: 1px solid #f0d9d4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .logo-area {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #ecc7c0;
+            padding-bottom: 1.2rem;
+        }
+
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #a65e4a;
+            line-height: 1.2;
+        }
+
+        .logo-title {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #a07a70;
+            margin-top: 0.25rem;
+        }
+
+        .nav-menu {
+            flex: 1;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a3a35;
+            font-weight: 400;
+            font-size: 1.05rem;
+            display: block;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #eddcd6;
+            color: #7f4e3f;
+            font-weight: 500;
+            padding-left: 1.5rem;
+        }
+
+        .nav-menu i {
+            margin-right: 0.8rem;
+            width: 1.4rem;
+            color: #b78d81;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: #b99b93;
+            border-top: 1px dashed #e1cbc4;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            flex: 1;
+            max-width: calc(100% - 280px);
+            background-color: #fff9f9;
+        }
+
+        section {
+            padding: 4rem 3rem;
+            border-bottom: 1px solid #f5e1db;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #764b3c;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: #e3b5a8;
+            border-radius: 3px;
+        }
+
+        .hero-block {
+            background: linear-gradient(145deg, #fef7f5, #fff);
+            border-radius: 0 0 40px 40px;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #643f32;
+            line-height: 1.1;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #ab7a6b;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .hero-desc {
+            margin-top: 2.2rem;
+            font-size: 1.1rem;
+            background: #faece8;
+            padding: 2rem 2.5rem;
+            border-radius: 30px;
+            color: #4a322b;
+            box-shadow: 0 10px 25px rgba(190, 125, 105, 0.1);
+        }
+
+        .hero-desc p {
+            margin-bottom: 1rem;
+        }
+
+        .hero-desc i {
+            color: #b07362;
+            margin-right: 10px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .bullet-list li i {
+            color: #c2897a;
+            width: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #fff5f2;
+            padding: 1.8rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 12px rgba(180, 120, 100, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #8b5e4f;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border-left: 4px solid #e1b5a8;
+            padding-left: 1rem;
+        }
+
+        .contact-block {
+            background: #f6e7e2;
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 2rem;
+            color: #aa6e5b;
+            font-size: 1.5rem;
+        }
+
+        .contact-item a {
+            color: #4a322b;
+            text-decoration: none;
+            border-bottom: 1px dotted #cfa392;
+        }
+
+        .contact-item a:hover {
+            color: #a4543c;
+            border-bottom: 1px solid;
+        }
+
+        .btn {
+            background: #ab6f5e;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 5px 12px rgba(170, 100, 80, 0.3);
+        }
+
+        .btn:hover {
+            background: #895746;
+            transform: scale(1.02);
+        }
+
+        /* mobile adaptation */
+        @media screen and (max-width: 900px) {
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem 1.5rem;
+                border-right: none;
+                border-bottom: 1px solid #f0d9d4;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            }
+
+            .sidebar-inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .logo-area {
+                margin-bottom: 0;
+                border-bottom: none;
+                padding-bottom: 0;
+                width: auto;
+            }
+
+            .nav-menu {
+                width: auto;
+            }
+
+            .nav-menu ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+
+            .nav-menu li {
+                margin-bottom: 0;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                padding-left: 1rem;
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+
+            .content {
+                max-width: 100%;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-name {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-desc {
+                padding: 1.5rem;
+            }
+
+            .nav-menu ul {
+                justify-content: center;
+            }
+
+            .logo-name {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* active section highlight in menu (js) */
+        .nav-menu a.active {
+            background: #eddcd6;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #fcf1ed;
+            color: #836156;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- левый сайдбар с меню -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <div class="logo-area">
+                    <div class="logo-name">Анна Игоревна</div>
+                    <div class="logo-title">психолог, женский наставник</div>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#hero" class="active"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="#about"><i class="fas fa-user"></i> Обо мне</a></li>
+                        <li><a href="#work"><i class="fas fa-hand-holding-heart"></i> С чем работаю</a></li>
+                        <li><a href="#formats"><i class="fas fa-calendar-alt"></i> Форматы</a></li>
+                        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Образование</a></li>
+                        <li><a href="#why-me"><i class="fas fa-star"></i> Почему я?</a></li>
+                        <li><a href="#contacts"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <p>✨ интуитивный подход<br>к твоей женственности</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- основной контент -->
+        <main class="content">
+            <!-- ГЕРОЙ (1+2 заставка) -->
+            <section id="hero" class="hero-block">
+                <div class="container">
+                    <div class="hero-name">Анна Игоревна</div>
+                    <div class="hero-sub">психолог, женский наставник</div>
+
+                    <div class="hero-desc">
+                        <p><i class="fas fa-feather-alt"></i> <strong>Практикующий психолог с 2021 года</strong></p>
+                        <p><i class="fas fa-feather-alt"></i> Проводник в мир твоей «женственности и сексуальности»,
+                            наставник на пути к себе настоящей.</p>
+                        <p><i class="fas fa-feather-alt"></i> Я помогаю своим клиентам комплексно улучшить жизнь во всех
+                            сферах.</p>
+                        <a href="#contacts" class="btn" style="margin-top: 1rem;">Записаться на приём</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ОБО МНЕ -->
+            <section id="about">
+                <div class="container">
+                    <h2>Обо мне</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Меня зовут Анна, и я бережно сопровождаю женщин
+                        в их внутренней трансформации. Моя миссия — помочь тебе раскрыть свою природу, обрести опору и
+                        создать жизнь, наполненную гармонией.</p>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3>✨ Мой подход</h3>
+                            <p>В работе я сочетаю классическую психотерапию, телесные практики и современные методики
+                                работы с женской идентичностью. Не даю готовых схем — мы ищем твой уникальный путь.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🌸 Ценности</h3>
+                            <p>Принимаю тебя целиком, без осуждения. Помогаю выстроить здоровые отношения с собой, с
+                                телом, с партнёром. В моей практике нет места стыду и страху.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- С ЧЕМ Я РАБОТАЮ -->
+            <section id="work">
+                <div class="container">
+                    <h2>С чем я работаю</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">Я работаю практически с любыми запросами, с
+                        которыми можно обратиться к психологу. Особый акцент делаю на темах, близких сердцу каждой
+                        женщины:</p>
+                    <ul class="bullet-list">
+                        <li><i class="fas fa-heart"></i> Отношения: трансформация из нездоровых в здоровые и счастливые
+                        </li>
+                        <li><i class="fas fa-heart"></i> Из одиночества — в обретение красивого союза</li>
+                        <li><i class="fas fa-heart"></i> Выход из созависимости, обретение опоры на себя</li>
+                        <li><i class="fas fa-heart"></i> Самоценность, самооценка, принятие своего тела и желаний</li>
+                        <li><i class="fas fa-heart"></i> Раскрытие женственности и сексуальности (без табу)</li>
+                        <li><i class="fas fa-heart"></i> Тревога, апатия, поиск себя, кризисы</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ФОРМАТЫ РАБОТЫ -->
+            <section id="formats">
+                <div class="container">
+                    <h2>Форматы работы</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3><i class="fas fa-comment-dots" style="color:#ac6e5b;"></i> Психотерапия</h3>
+                            <p>Офлайн / онлайн сессии (индивидуальные). Работаем в удобном для тебя формате, в
+                                безопасном пространстве.</p>
+                        </div>
+                        <div class="card">
+                            <h3><i class="fas fa-users" style="color:#ac6e5b;"></i> Девичники</h3>
+                            <p>Женские динамические офлайн-встречи. Круг поддержки, практики, обмен энергией —
+                                становимся ближе к себе.</p>
+                        </div>
+                        <div class="card">
+                            <h3><i class="fas fa-laptop" style="color:#ac6e5b;"></i> PRO-программы</h3>
+                            <p>Трансформационные онлайн-курсы. Один из них — <strong>«PRO
+                                    женственность/сексуальность/мужчину рядом»</strong> — глубокое погружение в свою
+                                природу.</p>
+                        </div>
+                        <div class="card">
+                            <h3><i class="fas fa-moon" style="color:#ac6e5b;"></i> Интенсивы</h3>
+                            <p>Тематические марафоны и закрытые клубы для тех, кто хочет бережных изменений в кругу
+                                единомышленниц.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ОБРАЗОВАНИЕ -->
+            <section id="education">
+                <div class="container">
+                    <h2>Образование</h2>
+                    <ul class="bullet-list" style="margin-top: 1rem;">
+                        <li><i class="fas fa-diploma"></i> Высшее психологическое образование (МГУ, факультет
+                            психологии, 2015-2020)</li>
+                        <li><i class="fas fa-diploma"></i> Специализация «Семейное консультирование и системная терапия»
+                        </li>
+                        <li><i class="fas fa-diploma"></i> Курс «Женская психология и сексуальность» (Институт
+                            перинатальной психологии)</li>
+                        <li><i class="fas fa-diploma"></i> Обучение у Григория Гулясова (телесно-ориентированная
+                            терапия, работа с родами)</li>
+                        <li><i class="fas fa-diploma"></i> Постоянная супервизия и личная терапия, повышение
+                            квалификации ежегодно</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ПОЧЕМУ ИМЕННО Я? -->
+            <section id="why-me">
+                <div class="container">
+                    <h2>Почему именно я?</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3>❤️ Живой опыт</h3>
+                            <p>Я не только психолог, но и женщина, которая прошла путь от сомнений к целостности. Знаю,
+                                как это — быть в созависимости, терять себя и возвращать.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🔮 Бережность</h3>
+                            <p>Ты не встретишь давления или «магических» обещаний. Только экологичная, глубокая работа в
+                                твоём темпе.</p>
+                        </div>
+                        <div class="card">
+                            <h3>✨ Результаты</h3>
+                            <p>Мои клиентки выходят из токсичных отношений, выходят замуж, открывают своё дело и
+                                начинают светиться изнутри. Я верю в каждую.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🌺 Целостность</h3>
+                            <p>Работаю не с отдельными симптомами, а со всей системой: тело, психика, душа, отношения.
+                                Трансформация идёт комплексно.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- КОНТАКТЫ -->
+            <section id="contacts">
+                <div class="container">
+                    <h2>Контакты</h2>
+                    <div class="contact-block">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span><strong>Телефон:</strong> <a href="tel:+79140112217">8 (914) 011-22-17</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span><strong>Instagram:</strong> <a href="https://instagram.com/_prudnikovalive_"
+                                    target="_blank">@_prudnikovalive_</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-telegram-plane"></i>
+                            <span><strong>Telegram:</strong> <a href="https://t.me/psyprudnikovaanna"
+                                    target="_blank">@psyprudnikovaanna</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Связаться со мной лично:</strong> напишите в Telegram или Direct, я отвечаю
+                                быстро</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="https://t.me/psyprudnikovaanna" class="btn" target="_blank"><i
+                                    class="fab fa-telegram"></i> Написать в Telegram</a>
+                        </div>
+                    </div>
+                    <!-- дополнительный телефон из фото, но по заданию оставляем основной -->
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #a48b84;">✨ также можно
+                        связаться по номеру 8 (984) 273-38-04 (по возможности)</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>© Анна Игоревна — психолог, женский наставник. 2026</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- плавный скролл и активный пункт меню -->
+    <script>
+        (function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const sidebar = document.querySelector('.sidebar');
+
+            // функция для определения активного раздела при скролле
+            function setActiveLink() {
+                let current = '';
+                const scrollPosition = window.scrollY + 100; // смещение
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href').replace('#', '');
+                    if (href === current) {
+                        link.classList.add('active');
+                    }
+                    // для главной (hero)
+                    if (current === 'hero' && link.getAttribute('href') === '#hero') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveLink);
+            window.addEventListener('load', setActiveLink);
+
+            // плавный скролл по клику
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href'); // #hero etc
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    // для мобильных можно закрывать меню, но не обязательно
+                });
+            });
+
+            // дополнительно: активный пункт при клике
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        })();
+    </script>
+    <!-- небольшая корректировка для hero id (если нет id у hero) -->
+    <!-- но hero уже имеет id="hero" -->
+</body>
+
+</html>
