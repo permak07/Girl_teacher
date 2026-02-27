@@ -841,3 +841,149 @@ footer span a {
     /* тон, совпадающий с цветом текста footer */
     text-decoration: none;
 }
+
+/* ===== УЛУЧШЕНИЯ ДЛЯ HERO ===== */
+.hero-large-photo {
+    position: relative;
+}
+
+.hero-large-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(248, 215, 208, 0.1) 0%, rgba(212, 224, 229, 0.3) 100%);
+    pointer-events: none;
+}
+
+/* ===== СЕКЦИЯ ОБО МНЕ (фото меньше) ===== */
+.about-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.about-left img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
+}
+
+/* ===== СЕКЦИЯ С ЧЕМ Я РАБОТАЮ (две колонки) ===== */
+.work-wrapper {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.work-text {
+    flex: 1;
+}
+
+.work-image {
+    flex: 1;
+    text-align: center;
+}
+
+.work-image img {
+    max-width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
+    object-fit: cover;
+}
+
+/* ===== СЕТКА ДЛЯ ДИПЛОМОВ ===== */
+.diploma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.diploma-placeholder {
+    background: #fffaf8;
+    border: 2px dashed #c99e8f;
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #a48b84;
+    font-size: 1rem;
+    transition: 0.2s;
+    aspect-ratio: 1 / 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
+}
+
+.diploma-placeholder:hover {
+    background: #fae0d8;
+    border-style: solid;
+}
+
+/* ===== СЕКЦИЯ ПОЧЕМУ Я (фото красивое) ===== */
+.why-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.why-right img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
+}
+
+/* ===== АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ ===== */
+@media screen and (max-width: 900px) {
+    .work-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .work-image {
+        width: 100%;
+    }
+
+    .work-image img {
+        max-width: 80%;
+    }
+
+    .about-left,
+    .why-right {
+        padding: 1rem;
+    }
+
+    .about-left img,
+    .why-right img {
+        max-width: 100%;
+        max-height: 70vh;
+    }
+
+    .diploma-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .diploma-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .work-image img {
+        max-width: 100%;
+    }
+}
