@@ -567,12 +567,12 @@ h2:after {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .contact-item {
     background: #fffaf8;
-    padding: 1.5rem 1.8rem;
+    padding: 1.5rem 2rem;
     border-radius: 25px;
     box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
     display: flex;
@@ -580,6 +580,7 @@ h2:after {
     gap: 1.2rem;
     font-size: 1.2rem;
     transition: transform 0.2s;
+    width: 100%;
 }
 
 .contact-item:hover {
@@ -590,6 +591,7 @@ h2:after {
     width: 2rem;
     color: #c99e8f;
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .contact-item a {
@@ -601,6 +603,56 @@ h2:after {
 .contact-item a:hover {
     color: #a4543c;
     border-bottom: 1px solid;
+}
+
+/* Текст слева, фото справа */
+.contacts-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* Увеличиваем долю левой колонки с текстом */
+.contact-grid {
+    flex: 2;
+    /* вместо 1 */
+}
+
+.contact-photo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* фото прижимается к правому краю */
+    align-items: center;
+}
+
+.contact-photo img {
+    max-width: 225px;
+    /* чуть уменьшили для баланса */
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+/* Адаптация для мобильных */
+@media screen and (max-width: 900px) {
+    .contacts-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-photo img {
+        max-width: 200px;
+    }
+}
+
+/* Уменьшаем расстояние между заголовком и контентом */
+#contacts h2 {
+    margin-bottom: 1rem;
 }
 
 /* ===== КНОПКИ ===== */
