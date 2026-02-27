@@ -355,6 +355,14 @@ h2:after {
     display: block;
 }
 
+/* Центрирование кнопки "Записаться на приём" в секции Hero */
+.hero-text .btn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    /* чтобы ширина кнопки подстраивалась под содержимое */
+}
+
 /* ===== ABOUT SECTION (фото слева, текст справа) ===== */
 .about-section {
     display: flex;
@@ -418,12 +426,52 @@ h2:after {
 }
 
 .work-image img {
-    max-width: 100%;
+    max-width: 90%;
     border-radius: 30px;
     box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
     object-fit: cover;
 }
 
+/* Уменьшаем расстояние между заголовком и текстом */
+#work h2 {
+    margin-bottom: 0.8rem;
+    /* было 1.5rem (общее для всех h2) */
+}
+
+#work .work-wrapper {
+    margin-top: 0.5rem;
+    /* было 2rem */
+}
+
+/* Увеличиваем основной текст и убираем inline-стиль */
+#work .work-text p {
+    font-size: 1.3rem;
+    /* было 1.2rem (inline) */
+    margin-bottom: 1.5rem;
+    /* регулируйте по вкусу */
+}
+
+/* Увеличиваем шрифт в маркированном списке */
+#work .bullet-list li {
+    font-size: 1.2rem;
+    /* было 1.1rem (унаследовано от body) */
+}
+
+#work,
+#why-me {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#work .container,
+#why-me .container {
+    max-width: none;
+    /* убираем ограничение ширины */
+    margin: 0;
+    /* отключаем центрирование */
+    padding: 0 4rem;
+    /* ровно такие же отступы, как у .about-right */
+}
 
 /* ===== WHY-ME SECTION (увеличен gap) ===== */
 .why-section {
