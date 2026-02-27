@@ -1,5 +1,5 @@
 (function () {
-    // ----- SPLASH SCREEN (исчезает через 2 сек или по клику) -----
+    // SPLASH SCREEN
     const splash = document.getElementById('splash');
     setTimeout(() => {
         splash.classList.add('hidden');
@@ -8,7 +8,7 @@
         splash.classList.add('hidden');
     });
 
-    // ----- ГАМБУРГЕР-МЕНЮ для мобильных -----
+    // ГАМБУРГЕР
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     if (menuToggle) {
@@ -17,7 +17,7 @@
         });
     }
 
-    // ----- МОДАЛЬНОЕ ОКНО (форма) -----
+    // МОДАЛЬНОЕ ОКНО
     const modal = document.getElementById('appointmentModal');
     const openModalBtns = document.querySelectorAll('#openModalBtn, #openModalBtn2');
     const closeModal = document.getElementById('closeModal');
@@ -40,7 +40,7 @@
         }
     });
 
-    // ----- ОБРАБОТКА ФОРМЫ (имитация отправки) -----
+    // ФОРМА
     const form = document.getElementById('appointmentForm');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@
         form.reset();
     });
 
-    // ----- Плавный скролл и активное меню -----
+    // ПЛАВНЫЙ СКРОЛЛ И АКТИВНОЕ МЕНЮ
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-menu a');
 

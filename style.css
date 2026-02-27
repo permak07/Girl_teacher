@@ -11,20 +11,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
-    /* чтобы градиент покрывал всю высоту */
 }
 
-/* Убираем фоновые цвета у секций контента */
 .content section {
     background-color: transparent;
-    /* было #fdf9f7 */
-}
-
-/* Если нужна лёгкая полупрозрачность для sidebar, можно добавить, но пока оставим как есть */
-.sidebar {
-    background: #fae0d8;
-    /* без изменений */
-    /* можно добавить rgba(250, 224, 216, 0.95) для лёгкого просвечивания градиента */
 }
 
 /* ===== SPLASH SCREEN ===== */
@@ -94,10 +84,8 @@ body {
 .sidebar {
     width: 280px;
     background: rgba(250, 224, 216, 0.3);
-    /* полупрозрачный */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    /* для Safari */
     padding: 2rem 1.5rem;
     position: sticky;
     top: 0;
@@ -165,7 +153,7 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background: rgba(226, 208, 200, 1.7);
+    background: rgba(226, 208, 200, 0.7);
     color: #5f4a44;
     font-weight: 500;
     padding-left: 1.5rem;
@@ -187,7 +175,6 @@ body {
     text-align: center;
 }
 
-/* Гамбургер кнопка (скрыта на десктопе) */
 .menu-toggle {
     display: none;
     background: none;
@@ -247,12 +234,33 @@ h2:after {
     border-radius: 3px;
 }
 
-/* ===== HERO SECTION (три колонки) ===== */
+/* ===== HERO SECTION ===== */
 .hero {
     display: flex;
+    flex-wrap: wrap;
     min-height: 90vh;
     padding: 0;
     border-bottom: none;
+    position: relative;
+}
+
+.hero-title-wrapper {
+    width: 100%;
+    padding: 2rem 3rem 0 3rem;
+}
+
+.hero-title-wrapper h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #643f32;
+    line-height: 1.2;
+}
+
+.hero-title-wrapper p {
+    font-size: 1.1rem;
+    color: #ab7a6b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .hero-left,
@@ -270,29 +278,9 @@ h2:after {
     padding: 2rem;
 }
 
-.hero-title {
-    text-align: left;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.hero-title h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #643f32;
-    line-height: 1.2;
-}
-
-.hero-title p {
-    font-size: 1.1rem;
-    color: #ab7a6b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 .hero-small-photo {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(201, 158, 143, 0.3);
@@ -308,6 +296,7 @@ h2:after {
 .hero-center {
     padding: 2rem;
     text-align: left;
+    justify-content: center;
 }
 
 .hero-text {
@@ -316,7 +305,8 @@ h2:after {
 
 .hero-text p {
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
     display: flex;
     align-items: flex-start;
     gap: 0.8rem;
@@ -330,11 +320,24 @@ h2:after {
 .hero-right {
     padding: 0;
     overflow: hidden;
+    flex: 1.5;
 }
 
 .hero-large-photo {
     width: 100%;
     height: 100%;
+    position: relative;
+}
+
+.hero-large-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(248, 215, 208, 0.1) 0%, rgba(212, 224, 229, 0.3) 100%);
+    pointer-events: none;
 }
 
 .hero-large-photo img {
@@ -344,7 +347,7 @@ h2:after {
     display: block;
 }
 
-/* ===== СЕКЦИЯ ОБО МНЕ (фото слева) ===== */
+/* ===== ABOUT SECTION (фото слева, текст справа) ===== */
 .about-section {
     display: flex;
     min-height: 90vh;
@@ -354,13 +357,20 @@ h2:after {
 .about-left {
     flex: 1;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
 
 .about-left img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: cover;
-    display: block;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
 }
 
 .about-right {
@@ -372,7 +382,6 @@ h2:after {
 
 .about-right .container {
     max-width: 900px;
-    /* увеличено для трёх колонок */
     margin: 0 auto;
 }
 
@@ -380,40 +389,69 @@ h2:after {
     grid-template-columns: 1fr;
 }
 
-/* Остальные стили секции (why, hero и т.д.) без изменений */
-
-/* ===== СЕКЦИЯ ПОЧЕМУ Я (фото справа) ===== */
-.why-section {
+/* ===== WORK SECTION ===== */
+.work-wrapper {
     display: flex;
-    min-height: 90vh;
-    padding: 0;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.work-text {
+    flex: 1;
+}
+
+.work-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-image img {
+    max-width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
+    object-fit: cover;
+}
+
+/* ===== WHY-ME SECTION (заголовок над колонками) ===== */
+.why-section {
+    padding: 4rem 3rem;
+    border-bottom: 1px solid #f5e1db;
+}
+
+.why-wrapper {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    align-items: stretch;
 }
 
 .why-left {
     flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 3rem;
-}
-
-.why-left .container {
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .why-right {
     flex: 1;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .why-right img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
 }
 
-/* ===== ОБЩИЕ СТИЛИ ДЛЯ КАРТОЧЕК И СПИСКОВ ===== */
+.why-left .grid-2 {
+    margin-top: 0;
+}
+
+/* ===== ОБЩИЕ СТИЛИ ===== */
 .bullet-list {
     list-style: none;
     margin-top: 1.5rem;
@@ -465,7 +503,7 @@ h2:after {
     margin-right: 0.5rem;
 }
 
-/* ===== КОНТАКТЫ (каждый пункт в отдельной карточке) ===== */
+/* ===== КОНТАКТЫ ===== */
 .contact-grid {
     display: flex;
     flex-direction: column;
@@ -506,6 +544,7 @@ h2:after {
     border-bottom: 1px solid;
 }
 
+/* ===== КНОПКИ ===== */
 .btn {
     background: #c99e8f;
     color: white;
@@ -525,7 +564,7 @@ h2:after {
     transform: scale(1.02);
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО (ФОРМА) ===== */
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
 .modal {
     display: none;
     position: fixed;
@@ -627,7 +666,48 @@ h2:after {
     border-radius: 40px;
 }
 
-/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+/* ===== ДИПЛОМЫ ===== */
+.diploma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.diploma-placeholder {
+    background: #fffaf8;
+    border: 2px dashed #c99e8f;
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #a48b84;
+    font-size: 1rem;
+    transition: 0.2s;
+    aspect-ratio: 1 / 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
+}
+
+.diploma-placeholder:hover {
+    background: #fae0d8;
+    border-style: solid;
+}
+
+/* ===== ФУТЕР ===== */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #836156;
+}
+
+footer span a {
+    color: #836156;
+    text-decoration: none;
+}
+
+/* ===== АДАПТАЦИЯ ===== */
 @media screen and (max-width: 900px) {
     .wrapper {
         flex-direction: column;
@@ -641,12 +721,10 @@ h2:after {
         padding: 1rem 1.5rem;
         border-right: none;
         border-bottom: 1px solid #f0d9d4;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        z-index: 1000;
     }
 
     .sidebar-inner {
@@ -694,7 +772,6 @@ h2:after {
 
     .nav-menu a {
         width: 100%;
-        box-sizing: border-box;
     }
 
     .sidebar-footer {
@@ -715,6 +792,12 @@ h2:after {
         min-height: auto;
     }
 
+    .hero-title-wrapper {
+        order: 0;
+        padding: 2rem 1.5rem 0;
+        text-align: center;
+    }
+
     .hero-left,
     .hero-center,
     .hero-right {
@@ -733,10 +816,7 @@ h2:after {
     .hero-right {
         order: 3;
         height: 50vh;
-    }
-
-    .hero-title {
-        text-align: center;
+        flex: 1;
     }
 
     .hero-small-photo {
@@ -750,55 +830,50 @@ h2:after {
     }
 
     .about-left {
+        order: 2;
         height: 50vh;
+        padding: 1rem;
     }
 
     .about-right {
+        order: 1;
         padding: 2rem 1.5rem;
     }
 
-    /* Why mobile */
-    .why-section {
+    /* Work mobile */
+    .work-wrapper {
         flex-direction: column;
-        min-height: auto;
+        gap: 2rem;
+    }
+
+    .work-image img {
+        max-width: 80%;
+    }
+
+    /* Why mobile */
+    .why-wrapper {
+        flex-direction: column;
     }
 
     .why-left {
         order: 2;
-        padding: 2rem 1.5rem;
     }
 
     .why-right {
         order: 1;
         height: 50vh;
+        padding: 0;
     }
 
-    .nav-menu.open {
-        display: block;
-        max-height: 80vh;
-        overflow-y: auto;
-        padding-right: 5px;
-        /* чтобы скролл не налезал на текст */
-    }
-
-    /* Дополнительный отступ снизу для секции "Обо мне" */
-    .about-right {
-        padding-bottom: 3rem;
-    }
-
-    /* Если заголовок h2 убегает под фото, добавляем отступ */
-    .about-right h2 {
-        margin-top: 0;
+    /* Diplomas mobile */
+    .diploma-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 600px) {
     .grid-2 {
         grid-template-columns: 1fr;
-    }
-
-    .hero-desc {
-        padding: 1.5rem;
     }
 
     .splash-name {
@@ -810,175 +885,20 @@ h2:after {
         padding: 1.2rem;
     }
 
-    .hero-right {
-        height: 40vh;
-    }
-
+    .hero-right,
     .about-left,
     .why-right {
         height: 40vh;
     }
 
-    /* Ещё немного воздуха для карточек на очень узких экранах */
-    .about-right .card:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.nav-menu a.active {
-    background: #eddcd6;
-    font-weight: 500;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: #836156;
-}
-
-footer span a {
-    color: #836156;
-    /* тон, совпадающий с цветом текста footer */
-    text-decoration: none;
-}
-
-/* ===== УЛУЧШЕНИЯ ДЛЯ HERO ===== */
-.hero-large-photo {
-    position: relative;
-}
-
-.hero-large-photo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, rgba(248, 215, 208, 0.1) 0%, rgba(212, 224, 229, 0.3) 100%);
-    pointer-events: none;
-}
-
-/* ===== СЕКЦИЯ ОБО МНЕ (фото меньше) ===== */
-.about-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.about-left img {
-    width: auto;
-    height: auto;
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: cover;
-    border-radius: 30px;
-    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
-}
-
-/* ===== СЕКЦИЯ С ЧЕМ Я РАБОТАЮ (две колонки) ===== */
-.work-wrapper {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-.work-text {
-    flex: 1;
-}
-
-.work-image {
-    flex: 1;
-    text-align: center;
-}
-
-.work-image img {
-    max-width: 100%;
-    border-radius: 30px;
-    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
-    object-fit: cover;
-}
-
-/* ===== СЕТКА ДЛЯ ДИПЛОМОВ ===== */
-.diploma-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.diploma-placeholder {
-    background: #fffaf8;
-    border: 2px dashed #c99e8f;
-    border-radius: 20px;
-    padding: 2rem 1rem;
-    text-align: center;
-    color: #a48b84;
-    font-size: 1rem;
-    transition: 0.2s;
-    aspect-ratio: 1 / 1.2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 12px rgba(201, 158, 143, 0.1);
-}
-
-.diploma-placeholder:hover {
-    background: #fae0d8;
-    border-style: solid;
-}
-
-/* ===== СЕКЦИЯ ПОЧЕМУ Я (фото красивое) ===== */
-.why-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.why-right img {
-    width: auto;
-    height: auto;
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: cover;
-    border-radius: 30px;
-    box-shadow: 0 20px 30px rgba(201, 158, 143, 0.25);
-}
-
-/* ===== АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ ===== */
-@media screen and (max-width: 900px) {
-    .work-wrapper {
-        flex-direction: column;
-        gap: 2rem;
+    .hero-small-photo {
+        max-width: 280px;
     }
 
-    .work-image {
-        width: 100%;
+    .hero-title-wrapper h1 {
+        font-size: 2.5rem;
     }
 
-    .work-image img {
-        max-width: 80%;
-    }
-
-    .about-left,
-    .why-right {
-        padding: 1rem;
-    }
-
-    .about-left img,
-    .why-right img {
-        max-width: 100%;
-        max-height: 70vh;
-    }
-
-    .diploma-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 600px) {
     .diploma-grid {
         grid-template-columns: 1fr;
     }
@@ -986,4 +906,9 @@ footer span a {
     .work-image img {
         max-width: 100%;
     }
+}
+
+.nav-menu a.active {
+    background: #eddcd6;
+    font-weight: 500;
 }
