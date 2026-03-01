@@ -17,7 +17,7 @@
         });
     }
 
-    // МОДАЛЬНОЕ ОКНО
+    // МОДАЛЬНОЕ ОКНО ЗАПИСИ
     const modal = document.getElementById('appointmentModal');
     const openModalBtns = document.querySelectorAll('#openModalBtn, #openModalBtn2');
     const closeModal = document.getElementById('closeModal');
@@ -91,5 +91,29 @@
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
+    });
+
+    // МОДАЛЬНОЕ ОКНО ДЛЯ ДИПЛОМА (закрытие по клику на фото или фон)
+    const diplomaImage = document.querySelector('.diploma-image');
+    const diplomaModal = document.getElementById('diplomaModal');
+    const diplomaFullImage = document.getElementById('diplomaFullImage');
+
+    if (diplomaImage) {
+        diplomaImage.addEventListener('click', () => {
+            diplomaFullImage.src = diplomaImage.src;
+            diplomaModal.classList.add('active');
+        });
+    }
+
+    // Закрытие по клику на само изображение
+    diplomaFullImage.addEventListener('click', () => {
+        diplomaModal.classList.remove('active');
+    });
+
+    // Закрытие по клику на фон
+    window.addEventListener('click', (e) => {
+        if (e.target === diplomaModal) {
+            diplomaModal.classList.remove('active');
+        }
     });
 })();
