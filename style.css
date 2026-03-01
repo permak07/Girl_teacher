@@ -1041,3 +1041,57 @@ footer span a {
     cursor: pointer;
     /* Указывает на кликабельность */
 }
+
+/* ===== ПОДПИСЬ В ЗАСТАВКЕ ===== */
+.splash-signature {
+    display: block;
+    max-width: 60%;
+    /* уменьшили размер */
+    height: auto;
+    margin: 0 auto 1rem auto;
+    filter: drop-shadow(2px 2px 10px rgba(200, 130, 100, 0.2));
+    /* добавили лёгкое размытие */
+}
+
+/* ===== ПОДПИСЬ В HERO ===== */
+.hero-signature {
+    display: block;
+    max-width: 40%;
+    /* уменьшили размер */
+    height: auto;
+    margin: 0 auto 0.5rem auto;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    /* добавили размытие */
+}
+
+/* Адаптация для мобильных */
+@media screen and (max-width: 600px) {
+    .splash-signature {
+        max-width: 85%;
+    }
+
+    .hero-signature {
+        max-width: 95%;
+    }
+}
+
+/* ===== ПОДПИСЬ В САЙДБАРЕ ===== */
+.logo-signature {
+    display: block;
+    max-width: 140px;
+    /* уменьшили с 180px до 140px */
+    width: 100%;
+    height: auto;
+    margin: 0 auto 0.5rem auto;
+    border-radius: 8px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Адаптация для мобильных устройств */
+@media screen and (max-width: 900px) {
+    .logo-signature {
+        max-width: 120px;
+        margin: 0 0 0 0;
+        /* убираем центрирование, чтобы не ломалось выравнивание в мобильной версии */
+    }
+}
