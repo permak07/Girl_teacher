@@ -102,13 +102,16 @@ body {
 .sidebar-inner {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    /* важно для корректной работы overflow */
 }
 
 .logo-area {
     margin-bottom: 2.5rem;
     border-bottom: 2px solid #cbb2aa;
     padding-bottom: 1.2rem;
+    flex-shrink: 0;
 }
 
 .logo-signature {
@@ -131,12 +134,37 @@ body {
     text-align: center;
 }
 
+/* Навигационное меню с прокруткой при необходимости */
 .nav-menu {
-    flex: 1;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #c99e8f #fae0dc;
+}
+
+/* Стилизация скролла для WebKit */
+.nav-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: #fae0dc;
+    border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: #c99e8f;
+    border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+    background: #b58273;
 }
 
 .nav-menu ul {
     list-style: none;
+    padding-right: 0.5rem;
 }
 
 .nav-menu li {
@@ -177,6 +205,7 @@ body {
     border-top: 1px dashed #d9c2ba;
     padding-top: 1rem;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .menu-toggle {
@@ -781,6 +810,7 @@ footer span a {
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        min-height: auto;
     }
 
     .logo-area {
@@ -793,7 +823,8 @@ footer span a {
     }
 
     .logo-signature {
-        max-width: 120px;
+        max-width: 180px;
+        /* Увеличено */
         margin: 0;
     }
 
@@ -817,6 +848,9 @@ footer span a {
         display: none;
         margin-top: 1rem;
         flex-basis: 100%;
+        max-height: 60vh;
+        /* чтобы меню не занимало весь экран */
+        overflow-y: auto;
     }
 
     .nav-menu.open {
@@ -858,6 +892,11 @@ footer span a {
 
     .hero-title-wrapper p {
         font-size: 1.5rem;
+    }
+
+    .hero-signature {
+        max-width: 85%;
+        /* чуть крупнее */
     }
 
     .hero-features {
@@ -929,7 +968,11 @@ footer span a {
     }
 
     .splash-title {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .hero-overlay {
+        padding: 2rem;
     }
 
     .splash-signature {
@@ -941,7 +984,7 @@ footer span a {
     }
 
     .hero-signature {
-        max-width: 95%;
+        max-width: 100%;
     }
 
     .hero .btn {
