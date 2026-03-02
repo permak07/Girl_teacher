@@ -40,13 +40,34 @@
         }
     });
 
-    // ФОРМА
+    // ФОРМА (отправка на Formspree)
     const form = document.getElementById('appointmentForm');
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert('Спасибо, заявка отправлена! Я свяжусь с вами в ближайшее время.');
-        closeModalFunc();
-        form.reset();
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://formspree.io/f/mjgedqoq', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                alert('Спасибо, заявка отправлена! Я свяжусь с вами в ближайшее время.');
+                closeModalFunc();      // закрываем модальное окно
+                form.reset();          // очищаем поля формы
+            } else {
+                // Если сервер вернул ошибку (например, спам-фильтр)
+                const data = await response.json();
+                alert(data.error || 'Ошибка при отправке. Попробуйте ещё раз или напишите в Telegram.');
+            }
+        } catch (error) {
+            alert('Ошибка соединения. Проверьте интернет или попробуйте позже.');
+        }
     });
 
     // ПЛАВНЫЙ СКРОЛЛ И АКТИВНОЕ МЕНЮ
