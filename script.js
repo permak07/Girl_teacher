@@ -1,12 +1,23 @@
 (function () {
     // SPLASH SCREEN
     const splash = document.getElementById('splash');
-    setTimeout(() => {
-        splash.classList.add('hidden');
-    }, 2000);
-    splash.addEventListener('click', () => {
-        splash.classList.add('hidden');
-    });
+
+    // Функция скрытия заставки (чтобы не дублировать код)
+    function hideSplash() {
+        if (!splash.classList.contains('hidden')) {
+            splash.classList.add('hidden');
+            document.body.classList.remove('splash-active'); // разблокируем прокрутку
+        }
+    }
+
+    // Блокируем прокрутку сразу при загрузке
+    document.body.classList.add('splash-active');
+
+    // Скрываем через 2 секунды
+    setTimeout(hideSplash, 2000);
+
+    // Скрываем по клику на заставку
+    splash.addEventListener('click', hideSplash);
 
     // ГАМБУРГЕР
     const menuToggle = document.getElementById('menuToggle');
