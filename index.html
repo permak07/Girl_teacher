@@ -12,10 +12,20 @@
     <meta name="author" content="Анна Игоревна">
     <meta name="robots" content="index, follow">
 
-    <!-- Preconnect для внешних ресурсов -->
+    <!-- Preconnect и Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Предзагрузка основного фонового изображения (для LCP) -->
+    <link rel="preload" as="image" href="./images/main.webp" fetchpriority="high">
+
+    <!-- Предзагрузка основных шрифтов (woff2) для уменьшения FOUT -->
+    <link rel="preload" as="font"
+        href="https://fonts.gstatic.com/s/playfairdisplay/v37/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2"
+        crossorigin="anonymous">
+    <link rel="preload" as="font"
+        href="https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" crossorigin="anonymous">
 
     <!-- Critical CSS (встроенные стили для первого экрана) -->
     <style>
@@ -35,6 +45,12 @@
             min-height: 100vh;
         }
 
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
         .wrapper {
             display: flex;
             min-height: 100vh;
@@ -45,7 +61,7 @@
             max-width: calc(100% - 280px);
         }
 
-        /* ===== SIDEBAR (базовые стили) ===== */
+        /* ===== SIDEBAR ===== */
         .sidebar {
             width: 280px;
             background: rgba(250, 224, 216, 0.3);
@@ -101,7 +117,7 @@
             display: none;
         }
 
-        /* ===== SPLASH SCREEN ===== */
+        /* ===== SPLASH ===== */
         .splash {
             position: fixed;
             top: 0;
@@ -157,7 +173,7 @@
             }
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO ===== */
         .hero {
             position: relative;
             background-image: url('./images/main.webp');
@@ -251,11 +267,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .hero .btn:hover {
-            background: #b58273;
-        }
-
-        /* ===== МЕДИА-ЗАПРОСЫ для первого экрана (мобильные) ===== */
+        /* ===== МЕДИА-ЗАПРОСЫ (мобильные) ===== */
         @media screen and (max-width: 900px) {
             .wrapper {
                 flex-direction: column;
@@ -368,7 +380,7 @@
         }
     </style>
 
-    <!-- Асинхронная загрузка Google Fonts (с уже установленным display=swap) -->
+    <!-- Асинхронная загрузка Google Fonts (с display=swap) -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Caveat:wght@400;600&display=swap"
         media="print" onload="this.media='all'">
@@ -384,13 +396,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </noscript>
 
-    <!-- Основные стили (style.css) – теперь загружаются асинхронно -->
+    <!-- Основные стили (асинхронно) -->
     <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="./style.css">
     </noscript>
 
-    <!-- Иконки (фавикон) -->
+    <!-- Фавикон -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/icon.gif">
     <link rel="icon" type="image/png" sizes="16x16" href="./images/icon.gif">
     <link rel="apple-touch-icon" sizes="180x180" href="./images/icon.gif">
@@ -402,7 +414,8 @@
     <!-- SPLASH SCREEN -->
     <div class="splash" id="splash">
         <div class="splash-content">
-            <img src="./images/signature_splash1.webp" alt="Анна Игоревна" class="splash-signature">
+            <img src="./images/signature_splash1.webp" alt="Анна Игоревна" class="splash-signature" width="800"
+                height="200">
             <div class="splash-title">ПСИХОЛОГ, ЖЕНСКИЙ НАСТАВНИК, КИНЕЗИОЛОГ</div>
         </div>
     </div>
@@ -445,7 +458,8 @@
         <aside class="sidebar">
             <div class="sidebar-inner">
                 <div class="logo-area">
-                    <img src="./images/signature_splash1.webp" alt="Анна Игоревна" class="logo-signature">
+                    <img src="./images/signature_splash1.webp" alt="Анна Игоревна" class="logo-signature" width="800"
+                        height="200">
                     <div class="logo-title">психолог, женский наставник, кинезиолог</div>
                 </div>
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
@@ -472,8 +486,8 @@
             <section id="hero" class="hero">
                 <div class="hero-overlay">
                     <div class="hero-title-wrapper">
-                        <img src="./images/signature_hero1.webp" alt="Анна Игоревна" class="hero-signature"
-                            fetchpriority="high">
+                        <img src="./images/signature_hero1.webp" alt="Анна Игоревна" class="hero-signature" width="800"
+                            height="200" fetchpriority="high">
                         <p>психолог, женский наставник, кинезиолог</p>
                     </div>
                     <div class="hero-features">
@@ -493,7 +507,7 @@
             <!-- ОБО МНЕ -->
             <section id="about" class="about-section">
                 <div class="about-left">
-                    <img src="./images/about_me.webp" alt="Анна Игоревна" loading="lazy">
+                    <img src="./images/about_me.webp" alt="Анна Игоревна" width="800" height="1000" loading="lazy">
                 </div>
                 <div class="about-right">
                     <div class="container">
@@ -533,7 +547,8 @@
                             </ul>
                         </div>
                         <div class="work-image">
-                            <img src="./images/work.webp" alt="С чем я работаю" loading="lazy">
+                            <img src="./images/work.webp" alt="С чем я работаю" width="1000" height="800"
+                                loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -574,8 +589,8 @@
                 <div class="container">
                     <h2>Образование</h2>
                     <div class="diploma-single">
-                        <img src="./images/education.webp" alt="Диплом Анны Игоревны" class="diploma-image"
-                            loading="lazy">
+                        <img src="./images/education.webp" alt="Диплом Анны Игоревны" class="diploma-image" width="1200"
+                            height="800" loading="lazy">
                     </div>
                 </div>
             </section>
@@ -611,7 +626,8 @@
                             </div>
                         </div>
                         <div class="why-right">
-                            <img src="./images/why_me.webp" alt="Анна Игоревна" loading="lazy">
+                            <img src="./images/why_me.webp" alt="Анна Игоревна" width="800" height="1000"
+                                loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -623,28 +639,21 @@
                     <h2>Контакты</h2>
                     <div class="contacts-wrapper">
                         <div class="contact-grid">
-                            <div class="contact-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <span><strong>Телефон:</strong> <a href="tel:+79140112217">8 (914) 011-22-17</a></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-instagram"></i>
-                                <span><strong>Instagram:</strong> <a href="https://instagram.com/_prudnikovalive_"
-                                        target="_blank">@_prudnikovalive_</a></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fab fa-telegram-plane"></i>
-                                <span><strong>Telegram:</strong> <a href="https://t.me/psyprudnikovaanna"
-                                        target="_blank">@psyprudnikovaanna</a></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-heart"></i>
-                                <span><strong>Связаться лично:</strong> напишите в Telegram или Direct, я отвечаю
-                                    быстро</span>
-                            </div>
+                            <div class="contact-item"><i class="fas fa-phone-alt"></i><span><strong>Телефон:</strong> <a
+                                        href="tel:+79140112217">8 (914) 011-22-17</a></span></div>
+                            <div class="contact-item"><i class="fab fa-instagram"></i><span><strong>Instagram:</strong>
+                                    <a href="https://instagram.com/_prudnikovalive_"
+                                        target="_blank">@_prudnikovalive_</a></span></div>
+                            <div class="contact-item"><i
+                                    class="fab fa-telegram-plane"></i><span><strong>Telegram:</strong> <a
+                                        href="https://t.me/psyprudnikovaanna"
+                                        target="_blank">@psyprudnikovaanna</a></span></div>
+                            <div class="contact-item"><i class="fas fa-heart"></i><span><strong>Связаться
+                                        лично:</strong> напишите в Telegram или Direct, я отвечаю быстро</span></div>
                         </div>
                         <div class="contact-photo">
-                            <img src="./images/contact.webp" alt="Анна Игоревна" loading="lazy">
+                            <img src="./images/contact.webp" alt="Анна Игоревна" width="600" height="800"
+                                loading="lazy">
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 2rem;">
