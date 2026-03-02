@@ -11,13 +11,362 @@
         content="психолог, женский наставник, кинезиолог, психолог для женщин, отношения, женственность, сексуальность, самооценка, психотерапия, девичники, онлайн консультации, тренинги для женщин, Анна Игоревна">
     <meta name="author" content="Анна Игоревна">
     <meta name="robots" content="index, follow">
+
     <!-- Preconnect для внешних ресурсов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Предзагрузка основного CSS (style.css) -->
-    <link rel="preload" href="./style.css" as="style">
+    <!-- Critical CSS (встроенные стили для первого экрана) -->
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(180deg, #f8d7d0 0%, #d4e0e5 100%);
+            color: #4a3a35;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+            max-width: calc(100% - 280px);
+        }
+
+        /* ===== SIDEBAR (базовые стили) ===== */
+        .sidebar {
+            width: 280px;
+            background: rgba(250, 224, 216, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #e2cbc4;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .logo-signature {
+            display: block;
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 0.5rem auto;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #7a6057;
+            text-align: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a3a35;
+            font-weight: 400;
+            font-size: 1.05rem;
+            display: block;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+        }
+
+        .nav-menu i {
+            margin-right: 0.8rem;
+            width: 1.4rem;
+            color: #c99e8f;
+            font-size: 1.1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* ===== SPLASH SCREEN ===== */
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #f8d7d0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .splash.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-content {
+            text-align: center;
+            animation: softAppear 1.2s ease-out;
+        }
+
+        .splash-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: #6f5a53;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .splash-signature {
+            display: block;
+            max-width: 70%;
+            height: auto;
+            margin: 0 auto 1rem auto;
+            filter: drop-shadow(2px 2px 10px rgba(200, 130, 100, 0.2));
+        }
+
+        @keyframes softAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            background-image: url('./images/main.webp');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+            border-bottom: none;
+        }
+
+        .hero-overlay {
+            padding: 3rem;
+            border-radius: 40px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .hero-title-wrapper p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        .hero-signature {
+            display: block;
+            max-width: 70%;
+            height: auto;
+            margin: 0 auto 0.5rem auto;
+            filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 25px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .feature-item i {
+            color: #ffd2c1;
+            font-size: 1.5rem;
+            width: 2rem;
+        }
+
+        .btn {
+            background: #c99e8f;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 5px 12px rgba(201, 158, 143, 0.4);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn:hover {
+            background: #b58273;
+            transform: scale(1.02);
+        }
+
+        .hero .btn {
+            background: #c99e8f;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .btn:hover {
+            background: #b58273;
+        }
+
+        /* ===== МЕДИА-ЗАПРОСЫ для первого экрана (мобильные) ===== */
+        @media screen and (max-width: 900px) {
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: sticky;
+                top: 0;
+                padding: 1rem 1.5rem;
+                border-right: none;
+                border-bottom: 1px solid #f0d9d4;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sidebar-inner {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .logo-area {
+                margin-bottom: 0;
+                border-bottom: none;
+                padding-bottom: 0;
+                flex: 1;
+            }
+
+            .logo-signature {
+                max-width: 180px;
+                margin: 0;
+            }
+
+            .logo-title {
+                font-size: 0.8rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: 2px solid #c99e8f;
+                border-radius: 15px;
+                padding: 0.5rem 1rem;
+                font-size: 1.4rem;
+                color: #5f4a44;
+                cursor: pointer;
+                margin-left: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .nav-menu.open {
+                display: block;
+            }
+
+            .content {
+                max-width: 100%;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-overlay {
+                padding: 2rem;
+            }
+
+            .feature-item {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .splash-title {
+                font-size: 1.1rem;
+            }
+
+            .splash-signature {
+                max-width: 90%;
+            }
+
+            .hero-title-wrapper p {
+                font-size: 1.2rem;
+            }
+
+            .hero-signature {
+                max-width: 100%;
+            }
+
+            .hero .btn {
+                font-size: 1rem;
+                padding: 0.8rem 1.8rem;
+            }
+        }
+    </style>
 
     <!-- Асинхронная загрузка Google Fonts (с уже установленным display=swap) -->
     <link rel="stylesheet"
@@ -35,15 +384,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </noscript>
 
-    <!-- Основные стили (style.css) – загружаются обычным способом, но уже не блокируются шрифтами и иконками -->
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Основные стили (style.css) – теперь загружаются асинхронно -->
+    <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="./style.css">
+    </noscript>
+
+    <!-- Иконки (фавикон) -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/icon.gif">
     <link rel="icon" type="image/png" sizes="16x16" href="./images/icon.gif">
     <link rel="apple-touch-icon" sizes="180x180" href="./images/icon.gif">
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E">
-
 </head>
 
 <body>
@@ -81,7 +433,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ДИПЛОМА (без крестика) -->
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ДИПЛОМА -->
     <div class="modal" id="diplomaModal">
         <div class="modal-content diploma-modal-content">
             <img src="" alt="Диплом" class="diploma-full-image" id="diplomaFullImage">
@@ -120,15 +472,15 @@
             <section id="hero" class="hero">
                 <div class="hero-overlay">
                     <div class="hero-title-wrapper">
-                        <img src="./images/signature_hero1.webp" alt="Анна Игоревна" class="hero-signature">
+                        <img src="./images/signature_hero1.webp" alt="Анна Игоревна" class="hero-signature"
+                            fetchpriority="high">
                         <p>психолог, женский наставник, кинезиолог</p>
                     </div>
                     <div class="hero-features">
                         <div class="feature-item"><i class="fas fa-feather-alt"></i> Практикующий психолог с 2021 года
                         </div>
                         <div class="feature-item"><i class="fas fa-feather-alt"></i> Проводник в мир женственности и
-                            сексуальности
-                        </div>
+                            сексуальности</div>
                         <div class="feature-item"><i class="fas fa-feather-alt"></i> Создатель и организатор женских
                             трансформационных проектов</div>
                         <div class="feature-item"><i class="fas fa-feather-alt"></i> Я помогаю улучшить жизнь во всех
@@ -166,8 +518,7 @@
                     <h2>С чем я работаю</h2>
                     <div class="work-wrapper">
                         <div class="work-text">
-                            <p style="font-size: 1.2rem; margin-bottom: 2rem; ">Я работаю практически с любыми
-                                запросами,
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Я работаю практически с любыми запросами,
                                 с которыми можно обратиться к психологу. Особый акцент делаю на темах, близких сердцу
                                 каждой женщины:</p>
                             <ul class="bullet-list">
@@ -218,7 +569,7 @@
                 </div>
             </section>
 
-            <!-- ОБРАЗОВАНИЕ (одно фото диплома) -->
+            <!-- ОБРАЗОВАНИЕ -->
             <section id="education">
                 <div class="container">
                     <h2>Образование</h2>
