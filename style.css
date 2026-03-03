@@ -14,12 +14,6 @@ body {
     min-height: 100vh;
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
 .content section {
     background-color: transparent;
@@ -457,6 +451,10 @@ h2:after {
     font-size: 1.1rem;
 }
 
+#work {
+    padding-top: 0.5rem;
+}
+
 #work,
 #why-me {
     padding-left: 0;
@@ -488,6 +486,17 @@ h2:after {
 
 .card:hover {
     transform: translateY(-5px);
+}
+
+.card a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #c99e8f;
+    text-underline-offset: 2px;
+}
+
+.card a:hover {
+    color: #b58273;
 }
 
 .card h3 {
@@ -626,7 +635,7 @@ h2:after {
 }
 
 .contact-photo img {
-    max-width: 225px;
+    max-width: 260px;
     width: 100%;
     height: auto;
     border-radius: 30px;
